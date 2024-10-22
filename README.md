@@ -30,12 +30,12 @@ Binaries
 1. cd jokes_app
 2. sudo -i
 2. docker build -t jokes-app:latest .
-3. docker run -d --rm -m 6MB -p \<your host port\>:8000 --name jokes-app-container  jokes-app
+3. docker run -d -p \<your host port\>:8000 --name jokes-app-container  jokes-app
 4. http://127.0.0.1:8000/
 
 ### Stop Application Container(s)
-1. docker ps
-2. docker rm \$(docker stop \$(docker ps -a -q --filter ancestor=\<image-name\> --format="{{.ID}}"))
+1. docker ps -a | awk 'NR == 1 || /jokes-app/'
+2. docker rm \$(docker stop \$(docker ps -a -q --filter ancestor="jokes-app" --format="{{.ID}}"))
 
 #### Created by Gaurav Shinde
 
