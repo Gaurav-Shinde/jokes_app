@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke</title>
+    <script>
+        async function fetchJoke() {
+            const response = await fetch('/joke');
+            const data = await response.json();
+            document.getElementById('joke').innerText = data.joke;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to the Jokes App!</h1>
+    <h2>Random Joke:</h2>
+    <h4>Disclaimer: Jokes may be offensive</h4>
+    <p id="joke">{{ joke }}</p>
+    <button onclick="fetchJoke()">New Joke</button>
+    <p>Built by Gaurav Shinde</p>
+    <p>Built with FastAPI</p>
+</body>
+
+</html>
