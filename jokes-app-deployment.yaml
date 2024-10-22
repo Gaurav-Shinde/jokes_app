@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jokes-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jokes-app
+  template:
+    metadata:
+      labels:
+        app: jokes-app
+    spec:
+      containers:
+      - name: jokes-app-container
+        image: jokes-app
+        ports:
+        - containerPort: 8000
