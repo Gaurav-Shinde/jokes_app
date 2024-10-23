@@ -45,7 +45,26 @@ Binaries
 Kustomize Version: v4.5.7
 
 ### Start Kubernetes Cluster
+1. sudo usermod -aG docker $USER && newgrp docker
+2. minikube start
+2. eval \$(minikube docker-env)
+2. docker build -t jokes-app:latest .
+2. kubectl apply -f jokes-app-deployment.yaml
+3. kubectl apply -f jokes-app-service.yaml
+4. Access at http://\<minikube_ip>:30000/
 
+### Inspect Kubernetes Cluster
+1. kubectl get deployments
+2. kubectl get pods
+3. kubectl get services
+4. minikube dashboard
+
+### Stop Kubernetes Cluster
+1. kubectl delete -f jokes-app-service.yaml
+2. kubectl delete -f jokes-app-deployment.yaml
+3. minikube stop
+4. minikube delete
+ 
 
 #### Created by Gaurav Shinde
 
